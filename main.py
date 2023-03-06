@@ -34,7 +34,7 @@ if price < item_lowest_price:
     context = ssl.create_default_context()
 
     EMAIL = "kesterdaniel401@gmail.com"
-    PASSWORD = os.getenv("EMAIL_PASSWORD")
+    PASSWORD = os.environ["EMAIL_PASSWORD"]
 
     msg = MIMEMultipart()
     msg["from"] = EMAIL

@@ -1,0 +1,30 @@
+name: run main.py
+
+on:
+  schedule:
+    - cron: '00 06 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' # install the python version needed
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install requests
+          pip install python-dotenv
+          pip install beautifulsoup4
+      - name: execute py script # run main.py
+        env:
+          EMAIL_PASSWORD: ${{secrets.EMAIL_PASSWORD}}
+        run: python main.py
