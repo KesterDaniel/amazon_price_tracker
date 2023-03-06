@@ -16,3 +16,5 @@ response.raise_for_status()
 webpage = response.text
 
 soup = BeautifulSoup(webpage, "html.parser")
+price_tag = soup.select_one(".a-price .a-offscreen")
+price = float(price_tag.getText().split("$")[1])
