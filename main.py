@@ -32,7 +32,7 @@ if price < item_lowest_price:
     context = ssl.create_default_context()
 
     EMAIL = "kesterdaniel401@gmail.com"
-    PASSWORD = os.environ["EMAIL_PASSWORD"]
+    EMAIL_PASSWORD = os.environ["EMAIL_PASSWORD"]
 
     msg = MIMEMultipart()
     msg["from"] = EMAIL
@@ -47,7 +47,7 @@ if price < item_lowest_price:
     msg.attach(MIMEText(html, "html"))
 
     with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context) as connection:
-        connection.login(user=EMAIL, password=PASSWORD)
+        connection.login(user=EMAIL, password=EMAIL_PASSWORD)
         connection.sendmail(
             from_addr=EMAIL,
             to_addrs="kesterdan17@gmail.com",
