@@ -7,8 +7,6 @@ from email.mime.text import MIMEText
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
-
 item_lowest_price = 540
 
 request_header = {
